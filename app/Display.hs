@@ -35,6 +35,8 @@ reshape size@(Size w h) = do
    frustum (-right) right (-top) top near far
    matrixMode $= Modelview 0
 
+
+idle :: IdleCallback
 idle = do
   postRedisplay Nothing
 

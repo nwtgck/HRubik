@@ -40,7 +40,7 @@ createTexture filename (repeatX, repeatY) = do
 	when repeatY (textureWrapMode Texture2D T $= (Repeated, Repeat))  -- define wrapping along the y axis.
 	textureFilter Texture2D $= ((Nearest, Nothing), Nearest)  -- ?  This is necessary, but I don't know what it does.
 	((Size x y), pixels) <- readImage filename  -- read our image into a PixelData structure.
-	texImage2D Nothing NoProxy 0 RGBA' (TextureSize2D x y) 0 pixels  -- associate our image with our new texture.  Since we are dealing with sprites, we do not wish to create mipmaps.
+	texImage2D Texture2D NoProxy 0 RGBA' (TextureSize2D x y) 0 pixels  -- associate our image with our new texture.  Since we are dealing with sprites, we do not wish to create mipmaps.
 	return (Just texName)  -- return our (Maybe TextureObject) for later use.
 
 
